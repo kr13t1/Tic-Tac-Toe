@@ -266,6 +266,29 @@
             height: auto;
             z-index: 1000;
         }
+
+        /* Кнопка "Назад" */
+        #back-button {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            color: #009078;
+            background-color: #f0f0f0;
+            border: 1px solid #009078;
+            border-radius: 5px;
+            padding: 5px 10px;
+            z-index: 1000;
+        }
+
+        /* Адаптация для телефонов */
+        @media (max-width: 600px) {
+            #back-button {
+                font-size: 14px;
+                padding: 4px 8px;
+            }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -316,6 +339,9 @@
         </div>
     </div>
 
+    <!-- Кнопка "Назад" -->
+    <button id="back-button">Назад</button>
+
     <script>
         const twoPlayerButton = document.getElementById('two-player-mode');
         const aiButton = document.getElementById('ai-mode');
@@ -329,6 +355,7 @@
         const rulesDiv = document.getElementById('rules');
         const gameInfo = document.getElementById('game-info');
         const gameMessage = document.getElementById('game-message');
+        const backButton = document.getElementById('back-button'); // Получаем кнопку "Назад"
 
         let numbers = [];
         let board = [null, null, null, null, null, null, null, null, null];
@@ -528,6 +555,11 @@
             if (event.target == rulesModal) {
                 rulesModal.style.display = "none";
             }
+        });
+
+        // Возврат на предыдущую страницу
+        backButton.addEventListener('click', () => {
+            window.history.back(); // Возврат на предыдущую страницу
         });
     </script>
 
