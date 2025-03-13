@@ -346,23 +346,22 @@
                 [0, 4, 8], [2, 4, 6]  // Diagonals
             ];
 
-            // Выбираем минимум 3 уникальные комбинации (можно больше)
-            const numberOfCombinations = Math.floor(Math.random() * (allCombinations.length - 3 + 1)) + 3; // От 3 до 8
+            // Генерируем случайную целевую сумму от 10 до 20
+            targetSum = Math.floor(Math.random() * (20 - 10 + 1)) + 10;
+
+            // Создаем массив и заполняем его случайными числами (1-9)
+            numbers = Array.from({ length: 9 }, () => Math.floor(Math.random() * 9) + 1);
+
+            // Выбираем минимум 3 уникальные комбинации
             const chosenCombinations = [];
-            while (chosenCombinations.length < numberOfCombinations) {
+            while (chosenCombinations.length < 3) {
                 const randomIndex = Math.floor(Math.random() * allCombinations.length);
                 if (!chosenCombinations.includes(allCombinations[randomIndex])) {
                     chosenCombinations.push(allCombinations[randomIndex]);
                 }
             }
 
-            // Генерируем targetSum (фиксированная для простоты)
-            targetSum = 15;
-
-            // Создаем массив и заполняем его случайными числами (1-9)
-            numbers = Array.from({ length: 9 }, () => Math.floor(Math.random() * 9) + 1);
-
-            // Корректируем выбранные комбинации
+            // Корректируем выбранные комбинации, чтобы они давали целевую сумму
             chosenCombinations.forEach(combo => {
                 let currentSum = 0;
                 combo.forEach(index => {
@@ -497,7 +496,6 @@
             gameMessage.textContent = message;
             gameMessage.style.display = 'block';
         }
-
 
         // Обработчики событий для выбора режима игры
         twoPlayerButton.addEventListener('click', () => {
