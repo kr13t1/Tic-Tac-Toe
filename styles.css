@@ -203,7 +203,6 @@ h1 {
 }
 
 /* Модальное окно */
-/* Модальное окно */
 .modal {
     display: none;
     position: fixed;
@@ -218,12 +217,14 @@ h1 {
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 15% auto; /* Центрирование по вертикали */
     padding: 15px;
     border: 1px solid #888;
-    width: 90%;
-    max-width: 500px;
+    width: fit-content; /* Ширина подстраивается под содержимое */
+    min-width: 200px; /* Минимальная ширина, чтобы окно не было слишком узким */
+    max-width: 90%; /* Ограничение максимальной ширины */
     border-radius: 10px;
+    text-align: left; /* Выравнивание текста по левому краю */
 }
 
 .close {
