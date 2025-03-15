@@ -1,4 +1,4 @@
-/* Основные стили для страницы */
+ /* Основные стили для страницы */
 body {
     font-family: 'Nunito', sans-serif;
     background-color: #f0f0f0;
@@ -43,7 +43,8 @@ h1 {
     background-color: #009078;
 }
 
-/* Блок с правилами игры */
+
+/* Правила игры */
 #rules {
     margin-top: 10px;
     text-align: left;
@@ -55,7 +56,6 @@ h1 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-left: auto;
     margin-right: auto; /* Центрирование блока */
-    display: none; /* Скрываем по умолчанию */
 }
 
 #rules h2 {
@@ -74,46 +74,6 @@ h1 {
     color: #555;
 }
 
-/* Значок информации */
-#info-icon {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    font-size: 1.5em;
-    color: #009078;
-    cursor: pointer;
-    z-index: 3;
-    font-style: normal; /* Убираем курсив */
-    font-family: 'Nunito', sans-serif; /* Используем основной шрифт */
-}
-
-#info-icon:hover {
-    color: #2EA692;
-}
-
-/* Адаптация для маленьких экранов */
-@media (max-width: 600px) {
-    #rules {
-        padding: 8px; /* Еще меньше padding */
-        max-width: 95%; /* Блок занимает почти всю ширину */
-    }
-
-    #rules h2 {
-        font-size: 1.2em; /* Уменьшенный размер шрифта */
-    }
-
-    #rules ol {
-        padding-left: 15px; /* Уменьшенный отступ */
-    }
-
-    #rules li {
-        font-size: 0.9em; /* Уменьшенный размер шрифта */
-    }
-
-    #info-icon {
-        font-size: 1.2em; /* Уменьшаем размер значка на маленьких экранах */
-    }
-}
 
 /* Контейнер для игрового поля */
 #game-container {
@@ -209,52 +169,167 @@ h1 {
     display: none;
 }
 
-/* Логотип */
-#logo {
-    position: fixed;
-    left: 20px;
-    bottom: 20px;
-    width: 150px;
-    height: auto;
-    z-index: 1000;
-}
+        /* Панель информации об игре */
+        #game-info {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            color: #009078;
+        }
 
-/* Кнопка "Назад" */
-#back-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    font-size: 20px; /* Увеличенный размер */
-    cursor: pointer;
-    color: #009078; /* Зеленый цвет */
-    background-color: #f0f0f0; /* Серый фон */
-    border: 1px solid #009078; /* Зеленая рамка */
-    border-radius: 5px;
-    padding: 10px 20px; /* Увеличенный размер */
-    z-index: 1000;
-}
+        .player-1 {
+            color: #FF6B6B;
+            font-weight: bold;
+        }
 
-/* Адаптация для телефонов */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 1.5em;
-    }
+        .player-2 {
+            color: #4CAF50;
+            font-weight: bold;
+        }
 
-    #game-area {
-        height: 50vh;
-    }
+        #player-1-divisor,
+        #player-2-divisor {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+ /* Логотип и кнопка "Назад" */
+        #logo {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            width: 100px; /* Увеличиваем размер логотипа */
+            height: auto;
+            z-index: 1000;
+        }
 
-    .number {
-        font-size: 1em;
-    }
+        #back-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 1.2em; /* Увеличиваем размер кнопки */
+            cursor: pointer;
+            color: #009078;
+            background-color: #f0f0f0;
+            border: 1px solid #009078;
+            border-radius: 5px;
+            padding: 10px 20px; /* Увеличиваем отступы */
+            z-index: 1000;
+        }/* Кнопки */
+        button {
+            padding: 10px 20px;
+            font-size: 0.9em;
+            font-family: 'Nunito', sans-serif;
+            color: #fff;
+            background-color: #2EA692;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-    #restart-button {
-        font-size: 1em;
-        padding: 8px 16px;
-    }
+        button:hover {
+            background-color: #009078;
+        }
 
-    #back-button {
-        font-size: 14px;
-        padding: 4px 8px;
-    }
-}
+        #mode-select {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Иконка настроек */
+        #settings-icon {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5em;
+            color: #009078;
+            cursor: pointer;
+            display: none;
+            z-index: 3;
+        }
+
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 15px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Адаптация для маленьких экранов */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            #rules h2 {
+                font-size: 1.2em;
+            }
+
+            #rules ol {
+                padding-left: 15px;
+            }
+
+            .cell {
+                font-size: 0.8em;
+            }
+
+            #game-info {
+                font-size: 1em;
+            }
+
+            #number-panel {
+                font-size: 1em;
+            }
+
+            #logo {
+                width: 80px; /* Уменьшаем размер логотипа на маленьких экранах */
+            }
+
+            #back-button {
+                font-size: 1em; /* Уменьшаем размер кнопки на маленьких экранах */
+                padding: 8px 16px;
+            }
+
+            #game-message {
+                font-size: 1em;
+                padding: 10px;
+            }
+
+            button {
+                padding: 8px 16px;
+                font-size: 0.8em;
+            }
+        }
