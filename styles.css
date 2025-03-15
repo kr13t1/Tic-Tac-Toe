@@ -1,0 +1,246 @@
+/* Основные стили для страницы */
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Заголовок игры */
+h1 {
+    margin-top: 20px;
+    font-size: 2.5em;
+    color: #2EA692;
+    font-weight: bold;
+}
+
+/* Кнопки выбора режима игры */
+#mode-select {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+#mode-select button {
+    padding: 12px 24px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #2EA692;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#mode-select button:hover {
+    background-color: #009078;
+}
+
+/* Блок с правилами игры */
+#rules {
+    margin-top: 20px;
+    text-align: left;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Контейнер для игрового поля */
+#game-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* Игровое поле */
+#grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 300px;
+    width: 100%;
+    margin: 20px auto;
+}
+
+/* Ячейки игрового поля */
+.cell {
+    background-color: #fff;
+    border: 2px solid #06DDBA;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 1.5em;
+    color: #009078;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    position: relative;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.cell:hover {
+    background-color: #f0f0f0;
+}
+
+/* Стили для символов X и O */
+.cell::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    opacity: 0.5;
+}
+
+.cell.player-x::after {
+    content: 'X';
+    color: #FF6B6B;
+}
+
+.cell.player-o::after {
+    content: 'O';
+    color: #4CAF50;
+}
+
+/* Стиль для выбранной ячейки */
+.cell.selected {
+    opacity: 0.7;
+}
+
+/* Информация о текущей игре */
+#game-info {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #009078;
+    font-weight: bold;
+}
+
+/* Сообщение о результате игры */
+#game-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2EA692;
+    display: none;
+}
+
+/* Иконка настроек */
+#settings-icon {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    font-size: 2em;
+    color: #009078;
+    cursor: pointer;
+    display: none;
+    z-index: 3;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 90%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #000;
+}
+
+/* Логотип */
+#logo {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    width: 150px;
+    height: auto;
+    z-index: 1000;
+}
+
+/* Кнопка "Назад" */
+#back-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #009078;
+    background-color: #f0f0f0;
+    border: 1px solid #009078;
+    border-radius: 5px;
+    padding: 5px 10px;
+    z-index: 1000;
+}
+
+/* Адаптация для телефонов */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    #game-area {
+        height: 50vh;
+    }
+
+    .number {
+        font-size: 1em;
+    }
+
+    #restart-button {
+        font-size: 1em;
+        padding: 8px 16px;
+    }
+
+    #back-button {
+        font-size: 14px;
+        padding: 4px 8px;
+    }
+}
