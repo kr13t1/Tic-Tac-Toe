@@ -220,9 +220,12 @@ h1 {
     margin: 15% auto; /* Центрирование по вертикали */
     padding: 15px;
     border: 1px solid #888;
-    width: fit-content; /* Ширина подстраивается под содержимое */
+    width: fit-content;/* Ширина подстраивается под содержимое */
+    height: fit-content;
     min-width: 200px; /* Минимальная ширина, чтобы окно не было слишком узким */
+    min-height: 100px;
     max-width: 90%; /* Ограничение максимальной ширины */
+     max-height: 90%;
     border-radius: 10px;
     text-align: left; /* Выравнивание текста по левому краю */
 }
