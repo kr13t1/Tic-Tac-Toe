@@ -48,11 +48,14 @@ h1 {
 #rules {
     margin-top: 10px;
     text-align: left;
-    max-width: 90%;
-    padding: 15px;
+    width: fit-content; /* Блок подстраивается под содержимое */
+    max-width: 90%; /* Ограничение максимальной ширины */
+    padding: 10px; /* Уменьшенный padding */
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-left: auto;
+    margin-right: auto; /* Центрирование блока */
 }
 
 #rules h2 {
@@ -69,6 +72,26 @@ h1 {
 #rules li {
     margin-bottom: 5px;
     color: #555;
+}
+
+/* Адаптация для маленьких экранов */
+@media (max-width: 600px) {
+    #rules {
+        padding: 8px; /* Еще меньше padding */
+        max-width: 95%; /* Блок занимает почти всю ширину */
+    }
+
+    #rules h2 {
+        font-size: 1.2em; /* Уменьшенный размер шрифта */
+    }
+
+    #rules ol {
+        padding-left: 15px; /* Уменьшенный отступ */
+    }
+
+    #rules li {
+        font-size: 0.9em; /* Уменьшенный размер шрифта */
+    }
 }
 
 
