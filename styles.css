@@ -43,7 +43,7 @@ h1 {
     background-color: #009078;
 }
 
-
+/* Блок с правилами игры */
 /* Правила игры */
 #rules {
     margin-top: 10px;
@@ -72,6 +72,26 @@ h1 {
 #rules li {
     margin-bottom: 5px;
     color: #555;
+}
+
+/* Адаптация для маленьких экранов */
+@media (max-width: 600px) {
+    #rules {
+        padding: 8px; /* Еще меньше padding */
+        max-width: 95%; /* Блок занимает почти всю ширину */
+    }
+
+    #rules h2 {
+        font-size: 1.2em; /* Уменьшенный размер шрифта */
+    }
+
+    #rules ol {
+        padding-left: 15px; /* Уменьшенный отступ */
+    }
+
+    #rules li {
+        font-size: 0.9em; /* Уменьшенный размер шрифта */
+    }
 }
 
 
@@ -169,32 +189,59 @@ h1 {
     display: none;
 }
 
-        /* Панель информации об игре */
-        #game-info {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            margin-bottom: 10px;
-            font-size: 1.2em;
-            color: #009078;
-        }
+/* Иконка настроек */
 
-        .player-1 {
-            color: #FF6B6B;
-            font-weight: bold;
-        }
+#settings-icon {
+    position: fixed;
+    top: 10px; /* Отступ сверху */
+    right: 10px; /* Отступ справа */
+    font-size: 1.5em; /* Размер значка */
+    color: #009078; /* Цвет значка */
+    cursor: pointer; /* Курсор при наведении */
+    display: none; /* Скрываем по умолчанию */
+    z-index: 3; /* Уровень слоя */
+}
 
-        .player-2 {
-            color: #4CAF50;
-            font-weight: bold;
-        }
+/* Модальное окно */
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
 
-        #player-1-divisor,
-        #player-2-divisor {
-            font-weight: bold;
-            font-size: 1.1em;
-        }
- /* Логотип и кнопка "Назад" */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 15px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* Логотип и кнопка "Назад" */
         #logo {
             position: fixed;
             left: 20px;
@@ -216,79 +263,10 @@ h1 {
             border-radius: 5px;
             padding: 10px 20px; /* Увеличиваем отступы */
             z-index: 1000;
-        }/* Кнопки */
-        button {
-            padding: 10px 20px;
-            font-size: 0.9em;
-            font-family: 'Nunito', sans-serif;
-            color: #fff;
-            background-color: #2EA692;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s;
         }
 
-        button:hover {
-            background-color: #009078;
-        }
 
-        #mode-select {
-            margin-top: 10px;
-            display: flex;
-            gap: 10px;
-        }
-
-        /* Иконка настроек */
-        #settings-icon {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5em;
-            color: #009078;
-            cursor: pointer;
-            display: none;
-            z-index: 3;
-        }
-
-        /* Модальное окно */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 15px;
-            border: 1px solid #888;
-            width: 90%;
-            max-width: 500px;
-            border-radius: 10px;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        /* Адаптация для маленьких экранов */
+/* Адаптация для маленьких экранов */
         @media (max-width: 600px) {
             h1 {
                 font-size: 1.5em;
