@@ -76,13 +76,51 @@ function handleCellClick(index) {
     }
 }
 
-// Ход ИИ
+// Ход ИИ (улучшенный)
 function aiMove() {
     if (!gameActive) return;
+
     const availableMoves = board.map((val, idx) => val === null ? idx : null).filter(val => val !== null);
     if (availableMoves.length === 0) return;
-    const move = availableMoves[Math.floor(Math.random() * availableMoves.length)];
-    handleCellClick(move);
+
+    // Текущая сумма ИИ
+    const aiSum = selectedNumbers['O'].reduce((a, b) => a + b, 0);
+
+    // Попытка выиграть
+    for (const move of availableMoves) {
+        const newSum = aiSum + numbers[move];
+        if (newSum === targetSum) {
+            handleCellClick(move);
+            return;
+        }
+    }
+
+    // Попытка заблокировать игрока
+    const playerSum = selectedNumbers['X'].reduce((a, b) => a + b, 0);
+    for (const move of availableMoves) {
+        const newPlayerSum = playerSum + numbers[move];
+        if (newPlayerSum === targetSum) {
+            handleCellClick(move);
+            return;
+        }
+    }
+
+    // Выбор числа, которое приближает ИИ к целевой сумме
+    let bestMove = availableMoves[0];
+    let bestScore = -Infinity;
+
+    for (const move of availableMoves) {
+        const newSum = aiSum + numbers[move];
+        if (newSum <= targetSum) {
+            const score = newSum;
+            if (score > bestScore) {
+                bestScore = score;
+                bestMove = move;
+            }
+        }
+    }
+
+    handleCellClick(bestMove);
 }
 
 // Сброс игры
